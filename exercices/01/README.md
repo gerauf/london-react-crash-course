@@ -6,10 +6,10 @@ A component is a class that encapsulates your view and your logic associated wit
 
 **JSX** is a small layer on top of Javascript that allows you to inline HTML in your code. Think of a tag as a variable in Javascript - and that's what actually happens when you transpile JSX into Javascript:
 
-```javascript
+```jsx
 var anchor = <a href="http://yld.io">YLD!</a>;
 ```
-```jsx
+```javascript
 var anchor = React.createElement('a', {
   href: 'http://yld.io'
 }, 'YLD!');
