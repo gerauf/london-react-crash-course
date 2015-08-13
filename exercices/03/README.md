@@ -26,7 +26,7 @@ var Checkbox = React.createClass({
   },
   toggle: function() {
     this.setState({
-      checked: !this.state.checked;
+      checked: !this.state.checked
     });
   },
   render: function() {
