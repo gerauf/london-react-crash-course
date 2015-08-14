@@ -1,0 +1,70 @@
+$base-color: #33BBEE;
+$primary-color: #2CF276;
+
+body {
+  background-color: $base-color;
+  color: black;
+  font-family: sans-serif;;
+  padding-bottom: 40px;
+}
+
+.row {
+  padding: 0 40px;
+}
+
+.header {
+  color: white;
+  padding: 20px 0;
+
+  .row {
+    h1 {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .go-back {
+      font-size: 18px;
+      float: left;
+      margin-top: 6px;
+      background-color: $primary-color;
+      color: white;
+      border-radius: 3px;
+      padding: 12px;
+
+      .glyphicon {
+        top: 4px;
+      }
+    }
+
+    .logo {
+      height: 60px;
+      float: right;
+    }
+  }
+}
+
+.instructions {
+  padding-top: 15px;
+  padding-bottom: 40px;
+  background-color: white;
+
+  .md {
+    background-color: white;
+    border-radius: 25px;
+  }
+}
+
+.main {
+  padding: 30px;
+  .component {
+    border: 1px solid white;
+    border-radius: 5px;
+    min-height: 250px;
+    padding: 30px;
+    background-color: white;
+  }
+}
+
+.footer {
+  text-align: center;
+}
