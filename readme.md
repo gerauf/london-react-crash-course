@@ -12,4 +12,4 @@ $ npm install
 $ npm start
 ```
 
-## 3. Your browser will open automatically
+## 3. Open [http://localhost:3000](http://localhost:3000)
