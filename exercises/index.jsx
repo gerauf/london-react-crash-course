@@ -4,9 +4,9 @@ import buildArray from 'build-array';
 import pad from 'pad';
 
 import * as bootstrap from 'bootstrap-webpack';
-import * as styles from '../style.css';
+import * as styles from './style.css';
 
-import exercises from '../.exercises.json';
+import exercises from './.exercises.json';
 
 class ExerciseList extends React.Component {
   render() {
@@ -68,7 +68,9 @@ class Main extends React.Component {
   componentDidMount() {
     let container = ReactDOM.findDOMNode(this.refs.container);
     try {
-      let element = React.createElement(this.state.component, {}, 'hello');
+      console.log(this.props);
+      console.log(this.state.component);
+      let element = React.createElement(this.state.component);
       ReactDOM.render(element, container);
     } catch (error) {
       let text = error.toString() + '\n' + error.stack;
@@ -148,7 +150,7 @@ class Page extends React.Component {
 let onHashChange = function() {
   let hash = window.location.hash.replace(/^\#/, '');
   let ex = exercises[hash];
-  ReactDOM.render((<Page ex={ex} />), document.body);
+  ReactDOM.render((<Page ex={ex} />), document.getElementById('root'));
 };
 
 window.onhashchange = onHashChange;

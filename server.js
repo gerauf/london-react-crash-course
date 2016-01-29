@@ -1,9 +1,12 @@
 var pascalCase = require('pascal-case');
 var webpack = require('webpack');
-var sync = require('browser-sync');
+var express = require('express');
 var path = require('path');
 var fs = require('fs');
 
+var config = require('./webpack.config.js');
+
+/******************************************************************************/
 
 var exercises = fs.readdirSync(path.join(__dirname, 'exercises'))
 .filter(function(ex) {
@@ -33,101 +36,33 @@ var exercises = fs.readdirSync(path.join(__dirname, 'exercises'))
   return all;
 }, {});
 
-fs.writeFileSync(path.join(__dirname, '.exercises.json'), JSON.stringify(exercises, null, 2), 'utf-8');
+var str = JSON.stringify(exercises, null, 2);
+var filename = path.join(__dirname, 'exercises/.exercises.json');
+fs.writeFileSync(filename, str, 'utf-8');
 
-var start = function(opts) {
-  var webpackCfg = {
-    debug: true,
-    devtool: 'eval',
-    context: path.join(__dirname, opts.baseDir),
-    entry: [
-      'webpack-hot-middleware/client',
-      opts.entry
-    ],
-    output: {
-      path: path.join(__dirname, 'static'),
-      publicPath: '/static/',
-      filename: opts.filename
-    },
-    plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
-    ],
-    module: {
-      loaders: [{
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loaders: ['babel']
-      }, {
-        test: /\.json?$/,
-        exclude: /node_modules/,
-        loaders: ['json']
-      }, {
-        test: /\.md$/,
-        loaders: ['html', 'remarkable']
-      }, {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
-      }, {
-        test: /\.css$/,
-        loaders: ['style', 'css']
-      },
-      // **IMPORTANT** This is needed so that each bootstrap js file required by
-      // bootstrap-webpack has access to the jQuery object
-      {
-        test: /bootstrap\/js\//,
-        loader: 'imports?jQuery=jquery'
-      },
-      // Needed for the css-loader when bootstrap-webpack loads bootstrap's css.
-      {
-        test: /\.woff\d?(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
-      }, {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream'
-      }, {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file'
-      }, {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
-      }]
-    }
-  };
+/******************************************************************************/
 
-  // Init the webpack instance
-  var compiler = webpack(webpackCfg);
+var app = express();
+var compiler = webpack(config);
 
-  // Start the hot loader
-  sync.create(opts.baseDir).init({
-    ui: false,
-    port: opts.port,
-    open: opts.open,
-    logLevel: 'info',
-    server: {
-      baseDir: opts.baseDir,
-      index: opts.index,
-      middleware: [
-        require('webpack-dev-middleware')(compiler, {
-          publicPath: webpackCfg.output.publicPath,
-          stats: {
-            colors: true
-          }
-        }),
-        require('webpack-hot-middleware')(compiler)
-      ]
-    },
-    files: [
-      path.join(opts.baseDir, '*.html')
-    ]
-  });
-};
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
 
-start({
-  port: 3000,
-  open: true,
-  entry: './index.jsx',
-  filename: 'bundle.js',
-  baseDir: 'exercises',
-  index: 'index.html'
+app.use(require('webpack-hot-middleware')(compiler));
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'exercises/index.html'));
 });
+
+app.listen(3000, 'localhost', function(err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  console.log('Listening at http://localhost:3000');
+});
+
+
