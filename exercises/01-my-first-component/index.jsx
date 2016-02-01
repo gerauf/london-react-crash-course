@@ -1,7 +1,11 @@
 import React from 'react';
 
 class HelloWorld extends React.Component {
-  // TODO write your component here
+
+  render() {
+    // TODO write your component here
+    return null;
+  }
 }
 
 export default HelloWorld;

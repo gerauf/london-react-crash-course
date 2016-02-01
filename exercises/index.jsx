@@ -68,8 +68,8 @@ class Main extends React.Component {
   componentDidMount() {
     let container = ReactDOM.findDOMNode(this.refs.container);
     try {
-      console.log(this.props);
-      console.log(this.state.component);
+      // console.log(this.props);
+      // console.log(this.state.component);
       let element = React.createElement(this.state.component);
       ReactDOM.render(element, container);
     } catch (error) {
@@ -134,7 +134,7 @@ class Page extends React.Component {
   render() {
     let ex = this.props.ex;
     let key = ex ? ex.slug : 'main';
-    console.log('rendering page');
+    //console.log('rendering page');
 
     return (
       <div>

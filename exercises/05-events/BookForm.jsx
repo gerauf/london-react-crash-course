@@ -30,7 +30,7 @@ class BookForm extends React.Component {
         <label htmlFor='title'>Title</label>
         <input value={this.state.title} onChange={this.changeTitle} placeholder='Title' type='text' className='form-control' id='title' />
       </div>
-      <div class="checkbox">
+      <div className="checkbox">
         <label htmlFor='read'>
           <span>Read: </span><input checked={this.state.read} onChange={this.changeRead} type='checkbox' id='read' />
         </label>
