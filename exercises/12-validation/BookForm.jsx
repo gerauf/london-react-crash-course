@@ -38,7 +38,7 @@ class BookForm extends React.Component {
         <label htmlFor='title'>Title</label>
         <input value={this.state.title} onChange={this.changeTitle.bind(this)} placeholder='Title' type='text' className='form-control' id='title' />
       </div>
-      <div className="checkbox">
+      <div className="form-group">
         <label htmlFor='read'>
           <span>Read: </span><input checked={this.state.read} onChange={this.changeRead.bind(this)} type='checkbox' id='read' />
         </label>
