@@ -16,7 +16,7 @@ class Book extends React.Component {
   render() {
     return (<tr>
       <td>{this.props.title}</td>
-      <td><input ref='read' type='checkbox' checked={this.state.read} onChange={this.toggleRead.bind(this)}/></td>
+      <td><input type='checkbox' checked={this.state.read} onChange={this.toggleRead.bind(this)}/></td>
     </tr>);
   }
 };

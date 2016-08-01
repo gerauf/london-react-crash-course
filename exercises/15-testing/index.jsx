@@ -26,7 +26,7 @@ class Books extends React.Component {
 
     return (
       <div>
-        <BookForm ref='bookForm' onBook={this.onBook.bind(this)} />
+        <BookForm onBook={this.onBook.bind(this)} />
         <table>
           <thead>
             <tr>

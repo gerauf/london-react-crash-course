@@ -35,11 +35,11 @@ class BookForm extends React.Component {
     return (<div>
       <div className='form-group'>
         <label htmlFor='title'>Title</label>
-        <input value={this.state.title} onChange={this.changeTitle.bind(this)} ref='title' type='text' className='form-control' id='title' />
+        <input value={this.state.title} onChange={this.changeTitle.bind(this)} type='text' className='form-control' id='title' />
       </div>
       <div className="form-group">
         <label htmlFor='read'>
-          <span>Read: </span><input checked={this.state.read} onChange={this.changeRead.bind(this)} ref='read' type='checkbox' id='read' />
+          <span>Read: </span><input checked={this.state.read} onChange={this.changeRead.bind(this)} type='checkbox' id='read' />
         </label>
       </div>
       <div className='form-group'>
