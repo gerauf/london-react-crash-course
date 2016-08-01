@@ -14,7 +14,7 @@ class App extends React.Component {
 };
 ```
 
-This components also support `propTypes` and `defaultProps`: 
+This components also support `propTypes` and `defaultProps`:
 
 ```js
 var Anchor = function(props) {
@@ -26,7 +26,7 @@ Anchor.propTypes = {
 };
 
 Anchor.defaultProps = {
-  href: 'http://www.meetup.com/require-lx'
+  href: 'http://blog.yld.io'
 };
 ```
 
