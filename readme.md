@@ -1,4 +1,4 @@
-# require('lx') React Crash Course
+# React Crash Course
 
 ## 1. Install the dependencies
 
