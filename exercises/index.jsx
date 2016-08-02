@@ -141,7 +141,7 @@ class Page extends React.Component {
         <Header key={'h' + key} ex={this.props.ex}/>
         <Instructions key={'i' + key} ex={this.props.ex} />
         <Main key={'m' + key} ex={this.props.ex} />
-        <div className='footer'>© YLD! Limited 2015</div>
+        <div className='footer'>© YLD! Limited 2016</div>
       </div>
     );
   }
