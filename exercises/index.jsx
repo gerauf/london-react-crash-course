@@ -5,6 +5,7 @@ import pad from 'pad';
 
 import * as bootstrap from 'bootstrap-webpack';
 import * as styles from './style.css';
+import * as sh from './github.css';
 
 import exercises from './.exercises.json';
 
@@ -106,6 +107,7 @@ class Instructions extends React.Component {
   constructor(props) {
     super(props);
     let ex = this.props.ex;
+
     this.state = {
       content: ex ? require('./' + ex.slug + '/readme.md') : require('./readme.md')
     };
