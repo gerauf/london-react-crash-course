@@ -19,7 +19,7 @@ class GuestList extends React.Component {
 };
 ```
 
-`changeName` and `changeBrings` have the exact same implementation. A way to solve this is by keeping track of both inputs and when a change occurs, get the value of both. With references we can get our components implementation.
+`changeName` and `changeBrings` have the exact same implementation. A way to solve this is by keeping track of both inputs and when a change occurs, get the value of both. With references we can get our components instance.
 
 ```js
 class Checkboxes extends React.Component {
